@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #start {
+        margin-left: 48vw;
+      }
+      #title{
+        margin-left: 43vw;
+      } 
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  
+        width: 100%; 
+       }
+    </style>
+  </head>
+  <body>
+    <h3 id="title">My Google Maps Game</h3>
+    <button id="start">START</button>
+    <div id="gameBar"></div>
+    <div id="result"></div>
+    <div id="distance"></div>
+    <div id="points"></div>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script src="index.js" >
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key= YOUR_API_KEY&callback=initMap">
+    </script>
+  </body>
+</html>
