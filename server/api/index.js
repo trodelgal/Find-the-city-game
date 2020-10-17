@@ -10,7 +10,7 @@ function logger(req, res, next) {
 router.use(logger);
 
 router.use('/records', require('./records'));
-router.use('/cites', require('./cities'));
+router.use('/cities', require('./cities'));
 router.use('/countries', require('./countries'));
 
 module.exports = router;

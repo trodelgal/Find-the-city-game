@@ -13,16 +13,9 @@ function moveMarker(location, marker) {
 //   marker.props.position=location
 }
 
-// let marker = new google.maps.Marker({
-//   position: { lat: -34.397, lng: 150.644 },
-//   draggable: false,
-//   animation: google.maps.Animation.DROP,
-//   clickable: false,
-//   icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-// });
 const marker = (
   <Marker
-    position={{ lat: -34.397, lng: 150.644 }}
+    position={{ lat:32, lng: 35 }}
     draggable={true}
     // animation={google.maps.Animation.DROP}
     clickable={true}
@@ -32,14 +25,14 @@ const marker = (
 const Map = withScriptjs(
   withGoogleMap((props) => (
     <GoogleMap
-      defaultZoom={8}
-      defaultCenter={{ lat: -34.397, lng: 150.644 }}
-      onClick={(event) => moveMarker(event.latLng, marker)}
+    defaultZoom={props.zoom}
+    defaultCenter={props.position}
+    onClick={(event) => moveMarker(event.latLng, marker)}
     >
       {props.isMarkerShown && marker}
     </GoogleMap>
   ))
 );
-// const WrappedMap = withScriptjs(withGoogleMap(Map));
+const WrappedMap = withScriptjs(withGoogleMap(Map));
 
-export default Map;
+export default WrappedMap;
