@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Records.init({
     name: DataTypes.STRING,
+    country: DataTypes.STRING,
     score: DataTypes.INTEGER
   }, {
     sequelize,

@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      country: {
+        type: Sequelize.STRING
+      },
       score: {
         type: Sequelize.INTEGER
       },

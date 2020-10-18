@@ -1,38 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
+  DROP,
 } from "react-google-maps";
 
-function moveMarker(location, marker) {
-  console.log(location);
-  console.log("here");
-  console.log(marker.props.position);
-//   marker.props.position=location
-}
-
-const marker = (
-  <Marker
-    position={{ lat:32, lng: 35 }}
-    draggable={true}
-    // animation={google.maps.Animation.DROP}
-    clickable={true}
-    icon="http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-  />
-);
 const Map = withScriptjs(
-  withGoogleMap((props) => (
-    <GoogleMap
-    defaultZoom={props.zoom}
-    defaultCenter={props.position}
-    onClick={(event) => moveMarker(event.latLng, marker)}
-    >
-      {props.isMarkerShown && marker}
-    </GoogleMap>
-  ))
+  withGoogleMap(({ markerPosition, country, moveMarker, greenMarker }) => {
+    return (
+      <GoogleMap
+        zoom={country.zoom}
+        center={{ lat: country.latitude, lng: country.longitude }}
+        onClick={(event) => moveMarker(event.latLng)}
+      >
+        <Marker
+          draggable={true}
+          position={markerPosition}
+          // animation={google.maps.Animation.DROP}
+          clickable={true}
+          icon="http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+        />
+        {greenMarker.map((city) => {
+          return (
+            <Marker
+              draggable={false}
+              position={{ lat: city.latitude, lng: city.longitude }}
+              animation={DROP}
+              clickable={true}
+              title={city.name}
+              icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+            />
+          );
+        })}
+      </GoogleMap>
+    );
+  })
 );
-const WrappedMap = withScriptjs(withGoogleMap(Map));
 
-export default WrappedMap;
+export default Map;
