@@ -152,6 +152,10 @@ function App() {
   const handleClose = () => setGameFinished(false);
 
   function saveRecord(name, totalScore) {
+    let regex = /[\d\s{2}]/;
+    if (regex.test(name) || name === '') return(
+      alert("You Must Enter Your Real Name!")
+    );
     let recordObj = {
       name: name,
       score: totalScore,
