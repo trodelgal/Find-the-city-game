@@ -2,6 +2,7 @@ const { Router } = require('express');
 const {
   Classes
 } = require('../models');
+const {addClassValidation} = require('../validate')
 const router = Router();
 
 router.get('/', async (req, res)=>{
@@ -15,10 +16,17 @@ router.get('/', async (req, res)=>{
 
 router.post('/', async (req, res) => {
     try{
-        const newClass = await Classes.create(req.body);
+      console.log("here");
+      await addClassValidation(req.body);
+      const classObj = {
+        school: req.body.school,
+        class:  req.body.class
+      }
+        const newClass = await Classes.create(classObj);
         return res.json(newClass);
     }catch(err) {
-        return res.json(err)
+      // console.log(err);
+      return res.send('wrong details');
     }
 });
 

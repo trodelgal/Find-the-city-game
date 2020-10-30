@@ -7,32 +7,53 @@ import { Navbar, Nav, Button, NavDropdown, Table } from "react-bootstrap";
 function Records({ allCountries }) {
   const [records, setRecords] = useState([]);
   const [classes, setClasses] = useState([]);
-  const [className, setClassName] = useState(null);
+  const [classId, setClassId] = useState(null);
   const [countryRecords, setCountryRecords] = useState("Israel");
+  const [todayRecords, setTodayRecords] = useState(false);
+  const [displayClassName, setDisplayClassName] = useState(null);
 
   const getCountryRecord = useCallback(async () => {
-    try{
-      const allCountryRecords = await axios.get(`/api/records/${countryRecords}`);
-      setRecords(allCountryRecords.data);
-    }catch(err) {
-      console.error(err.message)
+    try {
+      if(todayRecords){
+        const allCountryRecords = await axios.get(
+          `/api/records/${countryRecords}/today`
+        );
+        console.log(allCountryRecords.data);
+        setRecords(allCountryRecords.data);
+      }else{
+        const allCountryRecords = await axios.get(
+          `/api/records/${countryRecords}`
+        );
+        console.log(allCountryRecords.data);
+        setRecords(allCountryRecords.data);
+      }
+    } catch (err) {
+      console.error(err.message);
     }
   });
   const getClassRecord = useCallback(async () => {
-    try{
-      const allClassRecords = await axios.get(`/api/records/${className}/${countryRecords}`);
-      console.log(allClassRecords);
-      setRecords(allClassRecords.data);
-    }catch (err) {
-      console.error(err.message)
+    try {
+      if(todayRecords){
+        const allClassRecords = await axios.get(
+          `/api/records/${classId}/${countryRecords}`
+        );
+        setRecords(allClassRecords.data);
+      }else{
+        const allClassRecords = await axios.get(
+          `/api/records/${classId}/${countryRecords}`
+        );
+        setRecords(allClassRecords.data);
+      }
+    } catch (err) {
+      console.error(err.message);
     }
   });
   const getClasses = useCallback(async () => {
-    try{
+    try {
       const allClasses = await axios.get(`/api/classes/`);
       setClasses(allClasses.data);
-    }catch (err) {
-      console.error(err.message)
+    } catch (err) {
+      console.error(err.message);
     }
   });
 
@@ -42,16 +63,31 @@ function Records({ allCountries }) {
 
   useEffect(() => {
     getCountryRecord();
-    if(className){
-      setClassName(null);
+    setClassId(null);
+    setDisplayClassName(null);
+  }, [todayRecords]);
+
+  useEffect(() => {
+    getCountryRecord();
+    if (classId) {
+      setClassId(null);
+      setDisplayClassName(null);
     }
   }, [countryRecords]);
 
   useEffect(() => {
-    if(className){
+    if (classId) {
       getClassRecord();
+    }else if(classId === undefined) {
+      getCountryRecord();
+      setDisplayClassName(null);
     }
-  }, [className]);
+  }, [classId]);
+
+  function displayClassTable(val) {
+    setClassId(val.id);
+    setDisplayClassName(`${val.school} - ${val.class}`);
+  }
 
   return (
     <>
@@ -74,23 +110,33 @@ function Records({ allCountries }) {
           </NavDropdown>
           <NavDropdown title="Class" id="basic-nav-dropdown">
             {classes &&
-              classes.map((val,i) => {
+              classes.map((val, i) => {
                 return (
                   <NavDropdown.Item
                     key={i}
                     className="countryDropdown"
-                    onClick={() => setClassName(`${val.school} - ${val.class}`)}
+                    onClick={() => displayClassTable(val)}
                   >
                     {`${val.school} - ${val.class}`}
                   </NavDropdown.Item>
                 );
               })}
+            <NavDropdown.Item
+              key="withoutClass"
+              className="countryDropdown"
+              onClick={() =>  setClassId(undefined)}
+            >
+              Country records
+            </NavDropdown.Item>
           </NavDropdown>
         </Nav>
         <Nav className="mr-auto">
           <Navbar.Brand>Game Records</Navbar.Brand>
         </Nav>
         <Nav>
+            <Button id="recordButton" variant="outline-info"  onClick={()=>setTodayRecords(!todayRecords)}>
+              {todayRecords? 'All Records' : 'Today Records'}
+            </Button>
           <Link to="/">
             <Button id="recordButton" variant="outline-info">
               Game
@@ -98,17 +144,23 @@ function Records({ allCountries }) {
           </Link>
         </Nav>
       </Navbar>
+      {classId ? (
+        <h2>{`${countryRecords} - ${displayClassName}`}</h2>
+      ) : (
+        <h2>{countryRecords}</h2>
+      )}
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>#</th>
             <th>Name</th>
             <th>Score</th>
-            <th>Date</th>
+            <th>Date </th>
           </tr>
         </thead>
         <tbody>
-          {records.slice(0, 10).map((record, i) => {
+          {records &&
+          records.slice(0, 10).map((record, i) => {
             return (
               <tr>
                 <td>{i + 1}</td>

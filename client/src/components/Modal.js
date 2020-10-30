@@ -38,7 +38,7 @@ function EndGameModal({handleClose, gameFinished, score, saveRecord,  endGame, s
                     <option>privet</option>
                     {classes.map((value,i) =>{
                         return(
-                            <option>{`${value.school} - ${value.class}`}</option>
+                            <option>{`${value.id}. ${value.school} - ${value.class}`}</option>
                         )
                     })}
                 </select>
@@ -47,7 +47,7 @@ function EndGameModal({handleClose, gameFinished, score, saveRecord,  endGame, s
             <Button variant="secondary" onClick={()=>endGame()}>
                 New Game
             </Button>
-            <Button variant="primary" onClick={()=>saveRecord(name, totalScore, className)}>
+            <Button variant="primary" onClick={()=>saveRecord(name, totalScore, className.split('.')[0])}>
                 Save In Records
             </Button>
             </Modal.Footer>

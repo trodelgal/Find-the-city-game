@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       class_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: true,
       },
       score: {

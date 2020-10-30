@@ -5,6 +5,7 @@ import axios from "axios";
 import GameBar from "./components/GameBar";
 import Header from "./components/Header";
 import Records from "./components/Records";
+import Rules from "./components/Rules";
 import EndGameModal from "./components/Modal";
 import ClassModal from "./components/ClassModal";
 import Map from "./components/Map";
@@ -141,8 +142,8 @@ function App() {
 
   const handleClose = () => setGameFinished(false);
 
-  function saveRecord(name, totalScore, className) {
-    console.log(className);
+  function saveRecord(name, totalScore, classId) {
+    console.log(classId);
     let regex = /[\d\s{2}]/;
     if (regex.test(name) || name === "")
       return alert("You Must Enter Your Real Name!");
@@ -150,7 +151,7 @@ function App() {
       name: name,
       score: totalScore,
       country: country.name,
-      classId: className
+      classId: parseInt(classId)
     };
     axios.post("/api/records/", recordObj);
     setGameFinished(false);
@@ -175,13 +176,12 @@ function App() {
             <Map
               googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_KEY}&callback=initMap&libraries=&v=weekly`}
               loadingElement={<div style={{ height: `90%` }} />}
-              containerElement={<div style={{ height: `80%`, width: "80%" }} />}
+              containerElement={<div style={{ height: `85%`, width: "77%" }} />}
               mapElement={<div style={{ height: `100%` }} />}
               country={country}
               start={start}
               gameTurn={gameTurn}
               greenMarker={greenMarker}
-              // markerPosition={markerPosition}
             />
             {start ? (
               <GameBar
@@ -193,7 +193,7 @@ function App() {
                 endTime={endTime}
               />
             ) : (
-              <div style={{ width: "20%", height: "100%" }}>game bar</div>
+              <Rules hebrew={hebrew}/>
             )}
           </section>
           <EndGameModal

@@ -3,6 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 
 function ClassModal({openClassModal, setOpenClassModal}) {
+  const [error, setError] = useState(null)
     const schoolNameRef = useRef();
     const classNameRef = useRef();
     const passwordRef = useRef();
@@ -14,10 +15,15 @@ function ClassModal({openClassModal, setOpenClassModal}) {
             const postObj = {
                 school: schoolNameRef.current.value,
                 class: classNameRef.current.value,
+                password: passwordRef.current.value,
             }
             const res = await axios.post("/api/classes/", postObj);
-            console.log(res);
-            setOpenClassModal(false);
+            if(res.data==='wrong details'){
+              setError(res.data)
+            }else{
+              setOpenClassModal(false);
+              setError(null)
+            }
         }catch(err){
             console.error(err);
         }
@@ -38,6 +44,10 @@ function ClassModal({openClassModal, setOpenClassModal}) {
           <Form.Label>Teacher Password</Form.Label>
           <Form.Control type="password" placeholder="Password" ref={passwordRef}/>
         </Form.Group>
+        {
+          error&&
+          <div style={{color: 'red'}}>{error}</div>
+        }
         <Button variant="primary" onClick={()=>onSubmit()}>
           Submit
         </Button>
