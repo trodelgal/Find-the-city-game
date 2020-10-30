@@ -13,11 +13,11 @@ function GameBar({ challengeCities, score, distance, hebrew, gameFinished, endTi
           return (
             i < 5 &&
             (i === challengeCities.length - 1 ? (
-              <ListGroup.Item variant="primary">{`${
+              <ListGroup.Item key={i} variant="primary">{`${
                 i + 1
               }. ${name}`}</ListGroup.Item>
             ) : (
-              <ListGroup.Item variant="light">{`${
+              <ListGroup.Item key={i} variant="light">{`${
                 i + 1
               }. ${name}`}</ListGroup.Item>
             ))

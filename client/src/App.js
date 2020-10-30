@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
 import GameBar from "./components/GameBar";
 import Header from "./components/Header";
+import Records from "./components/Records";
 import EndGameModal from "./components/Modal";
+import ClassModal from "./components/ClassModal";
 import Map from "./components/Map";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Marker } from "react-google-maps";
@@ -14,23 +17,17 @@ function App() {
   const [cities, setCities] = useState(null);
   const [start, setStart] = useState(false);
 
-  let position =
-    country !== null
-      ? { lat: country.latitude, lng: country.longitude }
-      : { lat: 32, lng: 35 };
-
-  const [markerPosition, setMarkerPosition] = useState(position);
   const [challengeCities, setChallengeCities] = useState([]);
   const [greenMarker, setGreenMarker] = useState([]);
   const [distance, setDistance] = useState("");
   const [score, setScore] = useState(0);
   const [hebrew, setHebrew] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
+  const [openClassModal, setOpenClassModal] = useState(false);
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
 
   const clearState = () => {
-    setMarkerPosition(position);
     setChallengeCities([]);
     setGreenMarker([]);
     setDistance("");
@@ -41,7 +38,7 @@ function App() {
     setStart(false);
   };
 
-  const getCountries = async () => {
+  const getCountries = useCallback(async () => {
     try {
       const allCountries = await axios.get("/api/countries/");
       setAllCountries(allCountries.data);
@@ -51,16 +48,16 @@ function App() {
     } catch (err) {
       console.log(err);
     }
-  };
+  });
 
-  const getCountryCity = async () => {
+  const getCountryCity = useCallback(async () => {
     try {
       const countryCities = await axios.get(`/api/cities/${country.name}`);
       setCities(countryCities.data);
     } catch (err) {
       console.log(err);
     }
-  };
+  });
 
   useEffect(() => {
     getCountries();
@@ -91,8 +88,7 @@ function App() {
     setChallengeCities((val) => [...val, newCity]);
   }
 
-  function moveMarker(location) {
-    setMarkerPosition({ lat: location.lat(), lng: location.lng() });
+  function gameTurn(location) {
     if (start) {
       if (challengeCities.length < 5) {
         playerClick(location);
@@ -100,8 +96,6 @@ function App() {
         playerClick(location);
         setEndTime(new Date().getTime());
         setGameFinished(true);
-      } else {
-        console.log("game finish");
       }
     }
   }
@@ -121,10 +115,6 @@ function App() {
 
   function changeContry(countryValue) {
     clearState();
-    setMarkerPosition({
-      lat: countryValue.latitude,
-      lng: countryValue.longitude,
-    });
     setCountry(countryValue);
   }
 
@@ -151,68 +141,78 @@ function App() {
 
   const handleClose = () => setGameFinished(false);
 
-  function saveRecord(name, totalScore) {
+  function saveRecord(name, totalScore, className) {
+    console.log(className);
     let regex = /[\d\s{2}]/;
-    if (regex.test(name) || name === '') return(
-      alert("You Must Enter Your Real Name!")
-    );
+    if (regex.test(name) || name === "")
+      return alert("You Must Enter Your Real Name!");
     let recordObj = {
       name: name,
       score: totalScore,
       country: country.name,
+      classId: className
     };
-    console.log(recordObj);
     axios.post("/api/records/", recordObj);
     setGameFinished(false);
   }
 
   return (
-    <div className="App" style={{ width: "100vw", height: "100vh" }}>
-      <Header
-        allCountries={allCountries}
-        changeContry={changeContry}
-        start={start}
-        country={country}
-        hebrew={hebrew}
-        startGame={startGame}
-        endGame={endGame}
-        changeHebrew={changeHebrew}
-      />
-      <section id="gameContainer" style={{ width: "100%", height: "100%" }}>
-        <Map
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_KEY}&callback=initMap&libraries=&v=weekly`}
-          loadingElement={<div style={{ height: `90%` }} />}
-          containerElement={<div style={{ height: `80%`, width: "80%" }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          country={country}
-          moveMarker={moveMarker}
-          greenMarker={greenMarker}
-          markerPosition={markerPosition}
-        />
-        {start ? (
-          <GameBar
-            challengeCities={challengeCities}
-            score={score}
-            distance={distance}
+    <Router>
+      <Route exact path="/">
+        <div className="App" style={{ width: "100vw", height: "100vh" }}>
+          <Header
+            allCountries={allCountries}
+            changeContry={changeContry}
+            start={start}
+            country={country}
             hebrew={hebrew}
+            startGame={startGame}
+            endGame={endGame}
+            changeHebrew={changeHebrew}
+            setOpenClassModal={setOpenClassModal}
+          />
+          <section id="gameContainer" style={{ width: "100%", height: "100%" }}>
+            <Map
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_KEY}&callback=initMap&libraries=&v=weekly`}
+              loadingElement={<div style={{ height: `90%` }} />}
+              containerElement={<div style={{ height: `80%`, width: "80%" }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+              country={country}
+              start={start}
+              gameTurn={gameTurn}
+              greenMarker={greenMarker}
+              // markerPosition={markerPosition}
+            />
+            {start ? (
+              <GameBar
+                challengeCities={challengeCities}
+                score={score}
+                distance={distance}
+                hebrew={hebrew}
+                gameFinished={gameFinished}
+                endTime={endTime}
+              />
+            ) : (
+              <div style={{ width: "20%", height: "100%" }}>game bar</div>
+            )}
+          </section>
+          <EndGameModal
+            saveRecord={saveRecord}
             gameFinished={gameFinished}
+            handleClose={handleClose}
+            score={score}
+            startGame={startGame}
+            endGame={endGame}
+            startTime={startTime}
             endTime={endTime}
           />
-        ) : (
-          <div style={{ width: "20%", height: "100%" }}>game bar</div>
-        )}
-      </section>
-      <EndGameModal
-        saveRecord={saveRecord}
-        gameFinished={gameFinished}
-        handleClose={handleClose}
-        score={score}
-        startGame={startGame}
-        endGame={endGame}
-        startTime={startTime}
-        endTime={endTime}
-      />
-    </div>
+          <ClassModal openClassModal={openClassModal} setOpenClassModal={setOpenClassModal}/>
+        </div>
+      </Route>
+      <Route exact path="/records">
+        <Records allCountries={allCountries} />
+      </Route>
+    </Router>
   );
 }
 

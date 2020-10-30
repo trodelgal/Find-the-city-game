@@ -8,27 +8,42 @@ import {
 } from "react-google-maps";
 
 const Map = withScriptjs(
-  withGoogleMap(({ markerPosition, country, moveMarker, greenMarker }) => {
+  withGoogleMap(({ country, gameTurn, greenMarker }) => {
+    const [markerPosition, setMarkerPosition] = useState();
+
+    function mapClick(location) {
+      setMarkerPosition({ lat: location.lat(), lng: location.lng() });
+      gameTurn(location);
+    }
+
+    useEffect(() => {
+      setMarkerPosition({
+        lat: country.latitude,
+        lng: country.longitude,
+      });
+    }, [country]);
+
     return (
       <GoogleMap
         zoom={country.zoom}
         center={{ lat: country.latitude, lng: country.longitude }}
-        onClick={(event) => moveMarker(event.latLng)}
+        onClick={(event) => mapClick(event.latLng)}
       >
         <Marker
-          draggable={true}
+          draggable={(greenMarker.length === 0 || greenMarker.length === 5)? true : false}
           position={markerPosition}
           // animation={google.maps.Animation.DROP}
-          clickable={true}
+          clickable={false}
           icon="http://maps.google.com/mapfiles/ms/icons/red-dot.png"
         />
         {greenMarker.map((city) => {
           return (
             <Marker
+              key={city.name}
               draggable={false}
               position={{ lat: city.latitude, lng: city.longitude }}
               animation={DROP}
-              clickable={true}
+              clickable={greenMarker.length === 5 ? true : false}
               title={city.name}
               icon="http://maps.google.com/mapfiles/ms/icons/green-dot.png"
             />

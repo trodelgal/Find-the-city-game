@@ -1,11 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback, useRef} from 'react';
 import {Modal, Button} from 'react-bootstrap';
+import axios from "axios";
 
 function EndGameModal({handleClose, gameFinished, score, saveRecord,  endGame, startTime, endTime}){
-    const[name, setName] = useState('')
+    const [name, setName] = useState('')
+    const [classes, setClasses] = useState([])
+    const [className, setClassName] = useState('')
+    // const classNameRef = useRef();
+
     let totalScore = score-Math.floor((endTime-startTime)/1000)*3;
-    console.log(totalScore);
-  
+    const getClasses = useCallback(async () => {
+        try{
+          const allClasses = await axios.get(`/api/classes/`);
+          setClasses(allClasses.data);
+        }catch (err) {
+          console.error(err.message)
+        }
+      });
+    
+      useEffect(() => {
+        getClasses();
+      }, []);
+
     return (
         <Modal show={gameFinished} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -17,13 +33,21 @@ function EndGameModal({handleClose, gameFinished, score, saveRecord,  endGame, s
             </Modal.Body>
             <Modal.Body>
                 <h4>Save Your Record</h4>
-                Name: <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)}/>
+                Name: <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)}/><br/>
+                class: <select onChange={(e)=>setClassName(e.target.value)}>
+                    <option>privet</option>
+                    {classes.map((value,i) =>{
+                        return(
+                            <option>{`${value.school} - ${value.class}`}</option>
+                        )
+                    })}
+                </select>
             </Modal.Body>
             <Modal.Footer>
             <Button variant="secondary" onClick={()=>endGame()}>
                 New Game
             </Button>
-            <Button variant="primary" onClick={()=>saveRecord(name, totalScore)}>
+            <Button variant="primary" onClick={()=>saveRecord(name, totalScore, className)}>
                 Save In Records
             </Button>
             </Modal.Footer>
