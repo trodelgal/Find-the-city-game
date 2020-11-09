@@ -144,9 +144,8 @@ function App() {
 
   function saveRecord(name, totalScore, classId) {
     console.log(classId);
-    let regex = /[\d\s{2}]/;
-    if (regex.test(name) || name === "")
-      return alert("You Must Enter Your Real Name!");
+    if (name === "")
+      return alert("You Must Enter Your Name!");
     let recordObj = {
       name: name,
       score: totalScore,
