@@ -32,6 +32,7 @@ Clone this repo.
     3. Match the config file to your machine.
     4. `npx sequelize db:migrate `
     5. `npx sequelize db:seed:all `
+    6. `npm run dev` / `node .`
 - Setup client  
     1. `cd client`  
     2. `npm i` 
