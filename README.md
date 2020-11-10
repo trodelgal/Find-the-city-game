@@ -4,15 +4,16 @@
 - Server work with sequelize and express.
 - Using express router for convenience.
 - 4 sequelize models.
-- Each model 1-3 EndPoint for get/post the relrvant data.
+- Each model 1-3 EndPoint for get/post the relevant data.
 - data folder with JSON files for seeders.
 - validate file to validate the user input with JOI library.
 
 ## CLIENT
 - Using React and React-Bootstrap for styling.
-- 2 Dom-Router: Game page. and Record page.
+- 2 Dom-Router: Game page and Record page.
 - Rules at the right side.
-- Option to create a class game and get a class record table to compare the class students.
+- Option to create a group (class) and get a class record table to compare the class students.
+- Teacher code to create new class is- 123456123456.  
 - Option to hebrew.
 - Game Flow:
 
