@@ -5,6 +5,7 @@ const {
 
 const router = Router();
 
+// get all the city by country name
 router.get('/:contryName', async (req, res)=>{
   try{
     const country = await Countries.findOne({
@@ -16,4 +17,5 @@ router.get('/:contryName', async (req, res)=>{
     return res.json(err)
   }
 });
+
 module.exports = router;

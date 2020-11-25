@@ -4,6 +4,7 @@ const {
 } = require('../models');
 const router = Router();
 
+// get all the countries
 router.get('/', async (req, res)=>{
   try{
     const allCountries = await Countries.findAll({});

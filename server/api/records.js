@@ -5,6 +5,22 @@ const {
 const router = Router();
 const { Op } = require("sequelize");
 
+// get the date string
+function getDayString(dateNow){
+  let year = new Date(dateNow).getFullYear()
+  let day = new Date(dateNow).getDate()
+  let month = new Date(dateNow).getMonth() +1;
+  return `${year}/${month}/${day}`;
+}
+
+// get the start of the current date
+const getStartOfDayTime = (dateNow) =>{
+  const date = getDayString(dateNow)
+  const startOfDay = new Date(date);
+  return startOfDay.getTime();
+}
+
+// get all the records by country
 router.get('/:country', async (req, res)=>{
   try{
     const allRecords = await Records.findAll({
@@ -16,12 +32,13 @@ router.get('/:country', async (req, res)=>{
     return res.json(err)
   }
 });
+
 router.get('/:country/today', async (req, res)=>{
   try{
-    const oneDay = 1 * 24 * 60 * 60 * 1000;
+    const startOfTheDate = getStartOfDayTime(Date.now());
     const allRecords = await Records.findAll({
       where: {country:req.params.country, created_at: {
-        [Op.gte]: new Date(Date.now() - oneDay),
+        [Op.gte]: startOfTheDate,
       }},
       order: [['score', 'DESC']]
     });
