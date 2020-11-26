@@ -6,7 +6,6 @@ function EndGameModal({handleClose, gameFinished, score, saveRecord,  endGame, s
     const [name, setName] = useState('')
     const [classes, setClasses] = useState([])
     const [className, setClassName] = useState('')
-    // const classNameRef = useRef();
 
     let totalScore = score-Math.floor((endTime-startTime)/1000)*3;
     const getClasses = useCallback(async () => {
@@ -29,7 +28,7 @@ function EndGameModal({handleClose, gameFinished, score, saveRecord,  endGame, s
             </Modal.Header>
             <Modal.Body>
                 <h4>Your Score:</h4>
-                Distance Score: {score}, Time:  {Math.floor((endTime-startTime)/1000)} sec, Total Score: {score-Math.floor((endTime-startTime)/1000)*3} 
+                Distance Score: {score}, Time:  {Math.floor((endTime-startTime)/1000)} sec, Total Score: <b>{score-Math.floor((endTime-startTime)/1000)*3}</b>
             </Modal.Body>
             <Modal.Body>
                 <h4>Save Your Record</h4>
@@ -38,7 +37,7 @@ function EndGameModal({handleClose, gameFinished, score, saveRecord,  endGame, s
                     <option>privet</option>
                     {classes.map((value,i) =>{
                         return(
-                            <option>{`${value.id}. ${value.school} - ${value.class}`}</option>
+                            <option key={i}>{`${value.id}. ${value.school} - ${value.class}`}</option>
                         )
                     })}
                 </select>

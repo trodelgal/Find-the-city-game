@@ -1,8 +1,10 @@
-import React,{useState,useEffect} from "react";
+import React,{useContext, useState,useEffect} from "react";
 import { ListGroup } from "react-bootstrap";
 import Timer from "react-compound-timer";
+import CountryContext from "../contexts/Context";
 
-function GameBar({ challengeCities, score, distance, hebrew, gameFinished, endTime }) {
+function GameBar({ challengeCities, score, distance, gameFinished, endTime }) {
+  const { hebrew} = useContext(CountryContext);
 
   return (
     <div id="gameBar" style={{ width: "20%", height: "100%" }}>

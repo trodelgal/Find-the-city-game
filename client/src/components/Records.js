@@ -12,30 +12,31 @@ function Records({ allCountries }) {
   const [todayRecords, setTodayRecords] = useState(false);
   const [displayClassName, setDisplayClassName] = useState(null);
 
+  // get all the records by country
   const getCountryRecord = useCallback(async () => {
     try {
       if(todayRecords){
         const allCountryRecords = await axios.get(
           `/api/records/${countryRecords}/today`
         );
-        console.log(allCountryRecords.data);
         setRecords(allCountryRecords.data);
       }else{
         const allCountryRecords = await axios.get(
           `/api/records/${countryRecords}`
         );
-        console.log(allCountryRecords.data);
         setRecords(allCountryRecords.data);
       }
     } catch (err) {
       console.error(err.message);
     }
-  });
+  },[countryRecords,todayRecords]);
+
+  // get all the records by class
   const getClassRecord = useCallback(async () => {
     try {
       if(todayRecords){
         const allClassRecords = await axios.get(
-          `/api/records/${classId}/${countryRecords}`
+          `/api/records/${classId}/${countryRecords}/today`
         );
         setRecords(allClassRecords.data);
       }else{
@@ -47,7 +48,9 @@ function Records({ allCountries }) {
     } catch (err) {
       console.error(err.message);
     }
-  });
+  },[classId,countryRecords,todayRecords]);
+
+  // get all the classes 
   const getClasses = useCallback(async () => {
     try {
       const allClasses = await axios.get(`/api/classes/`);
@@ -55,18 +58,24 @@ function Records({ allCountries }) {
     } catch (err) {
       console.error(err.message);
     }
-  });
+  },[]);
 
+  // on component loading get all the classes
   useEffect(() => {
     getClasses();
   }, []);
 
+  // on change today records
   useEffect(() => {
-    getCountryRecord();
-    setClassId(null);
-    setDisplayClassName(null);
+    if(classId){
+      getClassRecord()
+    }else{
+      getCountryRecord();
+      setDisplayClassName("");
+    }
   }, [todayRecords]);
 
+  // on country change
   useEffect(() => {
     getCountryRecord();
     if (classId) {
@@ -75,8 +84,9 @@ function Records({ allCountries }) {
     }
   }, [countryRecords]);
 
+  // on class change
   useEffect(() => {
-    if (classId) {
+    if (classId){
       getClassRecord();
     }else if(classId === undefined) {
       getCountryRecord();
@@ -84,6 +94,7 @@ function Records({ allCountries }) {
     }
   }, [classId]);
 
+  // change class
   function displayClassTable(val) {
     setClassId(val.id);
     setDisplayClassName(`${val.school} - ${val.class}`);
@@ -160,9 +171,9 @@ function Records({ allCountries }) {
         </thead>
         <tbody>
           {records &&
-          records.slice(0, 10).map((record, i) => {
+          records.slice(0, 20).map((record, i) => {
             return (
-              <tr>
+              <tr key={i}>
                 <td>{i + 1}</td>
                 <td>{record.name}</td>
                 <td>{record.score}</td>

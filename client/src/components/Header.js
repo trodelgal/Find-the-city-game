@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Button, NavDropdown } from "react-bootstrap";
+import CountryContext from "../contexts/Context";
 
 function Header({
   allCountries,
   changeContry,
   start,
-  country,
-  hebrew,
   startGame,
   endGame,
   changeHebrew,
   setOpenClassModal
 }) {
+  const { country, hebrew} = useContext(CountryContext);
   return (
     <Navbar id="navbar" bg="dark" variant="dark">
       <Navbar.Brand>Find The City</Navbar.Brand>
@@ -61,7 +61,7 @@ function Header({
         )}
       </Nav>
       <Nav className="mr-auto">
-        {country !== null && <Navbar.Brand>{country.name}</Navbar.Brand>}
+        {country && <Navbar.Brand>{country.name}</Navbar.Brand>}
       </Nav>
       <Nav>
         <Link to="/records">

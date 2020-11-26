@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import { ListGroup } from "react-bootstrap";
+import CountryContext from "../contexts/Context";
 
 
-function Rules({ hebrew }) {
+function Rules() {
+  const { hebrew } = useContext(CountryContext);
   return (
     <div
       id="gameBar"
