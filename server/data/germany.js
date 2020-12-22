@@ -1,472 +1,567 @@
+module.exports = 
 [
  {
-   "Place Name": "Salzgitter, Lower Saxony",
-   "Latitude": 52.150002,
-   "Longitude": 10.333333
+   country_id:3,
+   name: "Salzgitter, Lower Saxony",
+   latitude: 52.150002,
+   longitude: 10.333333
  },
  {
-   "Place Name": "Hildesheim, Lower Saxony",
-   "Latitude": 52.150002,
-   "Longitude": 9.95
+   country_id:3,
+   name: "Hildesheim, Lower Saxony",
+   latitude: 52.150002,
+   longitude: 9.95
  },
  {
-   "Place Name": "Siegen, North Rhine-Westphalia",
-   "Latitude": 50.883331,
-   "Longitude": 8.016667
+   country_id:3,
+   name: "Siegen, North Rhine-Westphalia",
+   latitude: 50.883331,
+   longitude: 8.016667
  },
  {
-   "Place Name": "Erlangen, Bavaria",
-   "Latitude": 49.583332,
-   "Longitude": 11.016667
+   country_id:3,
+   name: "Erlangen, Bavaria",
+   latitude: 49.583332,
+   longitude: 11.016667
  },
  {
-   "Place Name": "Remscheid, North Rhine-Westphalia",
-   "Latitude": 51.183334,
-   "Longitude": 7.2
+   country_id:3,
+   name: "Remscheid, North Rhine-Westphalia",
+   latitude: 51.183334,
+   longitude: 7.2
  },
  {
-   "Place Name": "Jena, Thuringia",
-   "Latitude": 50.927223,
-   "Longitude": 11.586111
+   country_id:3,
+   name: "Jena, Thuringia",
+   latitude: 50.927223,
+   longitude: 11.586111
  },
  {
-   "Place Name": "Bergisch Gladbach, North Rhine-Westphalia",
-   "Latitude": 51.099998,
-   "Longitude": 7.116667
+   country_id:3,
+   name: "Bergisch Gladbach, North Rhine-Westphalia",
+   latitude: 51.099998,
+   longitude: 7.116667
  },
  {
-   "Place Name": "Reutlingen, Baden-Württemberg",
-   "Latitude": 48.483334,
-   "Longitude": 9.216667
+   country_id:3,
+   name: "Reutlingen, Baden-Württemberg",
+   latitude: 48.483334,
+   longitude: 9.216667
  },
  {
-   "Place Name": "Bremerhaven, Bremen",
-   "Latitude": 53.549999,
-   "Longitude": 8.583333
+   country_id:3,
+   name: "Bremerhaven, Bremen",
+   latitude: 53.549999,
+   longitude: 8.583333
  },
  {
-   "Place Name": "Recklinghausen, North Rhine-Westphalia",
-   "Latitude": 51.584999,
-   "Longitude": 7.161944
+   country_id:3,
+   name: "Recklinghausen, North Rhine-Westphalia",
+   latitude: 51.584999,
+   longitude: 7.161944
  },
  {
-   "Place Name": "Trier, Rhineland-Palatinate",
-   "Latitude": 49.75,
-   "Longitude": 6.633333
+   country_id:3,
+   name: "Trier, Rhineland-Palatinate",
+   latitude: 49.75,
+   longitude: 6.633333
  },
  {
-   "Place Name": "Bottrop, North Rhine-Westphalia",
-   "Latitude": 51.524723,
-   "Longitude": 6.922778
+   country_id:3,
+   name: "Bottrop, North Rhine-Westphalia",
+   latitude: 51.524723,
+   longitude: 6.922778
  },
  {
-   "Place Name": "Pforzheim, Baden-Württemberg",
-   "Latitude": 48.901943,
-   "Longitude": 8.716667
+   country_id:3,
+   name: "Pforzheim, Baden-Württemberg",
+   latitude: 48.901943,
+   longitude: 8.716667
  },
  {
-   "Place Name": "Heilbronn, Baden-Württemberg",
-   "Latitude": 49.150002,
-   "Longitude": 9.2166
+   country_id:3,
+   name: "Heilbronn, Baden-Württemberg",
+   latitude: 49.150002,
+   longitude: 9.2166
  },
  {
-   "Place Name": "Ulm, Baden-Württemberg",
-   "Latitude": 48.400002,
-   "Longitude": 9.983333
+   country_id:3,
+   name: "Ulm, Baden-Württemberg",
+   latitude: 48.400002,
+   longitude: 9.983333
  },
  {
-   "Place Name": "Offenbach am Main, Hesse",
-   "Latitude": 50.099998,
-   "Longitude": 8.8
+   country_id:3,
+   name: "Offenbach am Main, Hesse",
+   latitude: 50.099998,
+   longitude: 8.8
  },
  {
-   "Place Name": "Fürth, Bavaria",
-   "Latitude": 49.466667,
-   "Longitude": 11
+   country_id:3,
+   name: "Fürth, Bavaria",
+   latitude: 49.466667,
+   longitude: 11
  },
  {
-   "Place Name": "Würzburg, Bavaria",
-   "Latitude": 49.783333,
-   "Longitude": 9.933333
+   country_id:3,
+   name: "Würzburg, Bavaria",
+   latitude: 49.783333,
+   longitude: 9.933333
  },
  {
-   "Place Name": "Ingolstadt, Bavaria",
-   "Latitude": 48.766666,
-   "Longitude": 11.433333
+   country_id:3,
+   name: "Ingolstadt, Bavaria",
+   latitude: 48.766666,
+   longitude: 11.433333
  },
  {
-   "Place Name": "Paderborn, North Rhine-Westphalia",
-   "Latitude": 51.716667,
-   "Longitude": 8.766667
+   country_id:3,
+   name: "Paderborn, North Rhine-Westphalia",
+   latitude: 51.716667,
+   longitude: 8.766667
  },
  {
-   "Place Name": "Neuss, North Rhine-Westphalia",
-   "Latitude": 51.200001,
-   "Longitude": 6.7
+   country_id:3,
+   name: "Neuss, North Rhine-Westphalia",
+   latitude: 51.200001,
+   longitude: 6.7
  },
  {
-   "Place Name": "Herne, North Rhine-Westphalia",
-   "Latitude": 51.549999,
-   "Longitude": 7.216667
+   country_id:3,
+   name: "Herne, North Rhine-Westphalia",
+   latitude: 51.549999,
+   longitude: 7.216667
  },
  {
-   "Place Name": "Osnabrück, Lower Saxony",
-   "Latitude": 52.283333,
-   "Longitude": 8.05
+   country_id:3,
+   name: "Osnabrück, Lower Saxony",
+   latitude: 52.283333,
+   longitude: 8.05
  },
  {
-   "Place Name": "Leverkusen, North Rhine-Westphalia",
-   "Latitude": 51.033333,
-   "Longitude": 6.983333
+   country_id:3,
+   name: "Leverkusen, North Rhine-Westphalia",
+   latitude: 51.033333,
+   longitude: 6.983333
  },
  {
-   "Place Name": "Oldenburg, Lower Saxony",
-   "Latitude": 53.14389,
-   "Longitude": 8.213889
+   country_id:3,
+   name: "Oldenburg, Lower Saxony",
+   latitude: 53.14389,
+   longitude: 8.213889
  },
  {
-   "Place Name": "Mülheim an der Ruhr, North Rhine-Westphalia",
-   "Latitude": 51.433334,
-   "Longitude": 6.883333
+   country_id:3,
+   name: "Mülheim an der Ruhr, North Rhine-Westphalia",
+   latitude: 51.433334,
+   longitude: 6.883333
  },
  {
-   "Place Name": "Saarbrücken, Saarland",
-   "Latitude": 49.233334,
-   "Longitude": 7
+   country_id:3,
+   name: "Saarbrücken, Saarland",
+   latitude: 49.233334,
+   longitude: 7
  },
  {
-   "Place Name": "Hamm, North Rhine-Westphalia",
-   "Latitude": 51.683334,
-   "Longitude": 7.816667
+   country_id:3,
+   name: "Hamm, North Rhine-Westphalia",
+   latitude: 51.683334,
+   longitude: 7.816667
  },
  {
-   "Place Name": "Hagen, North Rhine-Westphalia",
-   "Latitude": 51.366669,
-   "Longitude": 7.483333
+   country_id:3,
+   name: "Hagen, North Rhine-Westphalia",
+   latitude: 51.366669,
+   longitude: 7.483333
  },
  {
-   "Place Name": "Erfurt, Thuringia",
-   "Latitude": 50.983334,
-   "Longitude": 11.033333
+   country_id:3,
+   name: "Erfurt, Thuringia",
+   latitude: 50.983334,
+   longitude: 11.033333
  },
  {
-   "Place Name": "Lübeck, Schleswig-Holstein",
-   "Latitude": 53.86972,
-   "Longitude": 10.686389
+   country_id:3,
+   name: "Lübeck, Schleswig-Holstein",
+   latitude: 53.86972,
+   longitude: 10.686389
  },
  {
-   "Place Name": "Krefeld, North Rhine-Westphalia",
-   "Latitude": 51.333332,
-   "Longitude": 6.566667
+   country_id:3,
+   name: "Krefeld, North Rhine-Westphalia",
+   latitude: 51.333332,
+   longitude: 6.566667
  },
  {
-   "Place Name": "Magdeburg, Saxony-Anhalt",
-   "Latitude": 52.133331,
-   "Longitude": 11.616667
+   country_id:3,
+   name: "Magdeburg, Saxony-Anhalt",
+   latitude: 52.133331,
+   longitude: 11.616667
  },
  {
-   "Place Name": "Halle (Saale), Saxony-Anhalt",
-   "Latitude": 51.483334,
-   "Longitude": 11.966667
+   country_id:3,
+   name: "Halle (Saale), Saxony-Anhalt",
+   latitude: 51.483334,
+   longitude: 11.966667
  },
  {
-   "Place Name": "Aachen, North Rhine-Westphalia",
-   "Latitude": 50.775555,
-   "Longitude": 6.083611
+   country_id:3,
+   name: "Aachen, North Rhine-Westphalia",
+   latitude: 50.775555,
+   longitude: 6.083611
  },
  {
-   "Place Name": "Kiel, Schleswig-Holstein",
-   "Latitude": 54.323334,
-   "Longitude": 10.139444
+   country_id:3,
+   name: "Kiel, Schleswig-Holstein",
+   latitude: 54.323334,
+   longitude: 10.139444
  },
  {
-   "Place Name": "Chemnitz, Saxony",
-   "Latitude": 50.833332,
-   "Longitude": 12.916667
+   country_id:3,
+   name: "Chemnitz, Saxony",
+   latitude: 50.833332,
+   longitude: 12.916667
  },
  {
-   "Place Name": "Braunschweig, Lower Saxony",
-   "Latitude": 52.266666,
-   "Longitude": 10.516667
+   country_id:3,
+   name: "Braunschweig, Lower Saxony",
+   latitude: 52.266666,
+   longitude: 10.516667
  },
  {
-   "Place Name": "Mönchengladbach, North Rhine-Westphalia",
-   "Latitude": 51.200001,
-   "Longitude": 6.433333
+   country_id:3,
+   name: "Mönchengladbach, North Rhine-Westphalia",
+   latitude: 51.200001,
+   longitude: 6.433333
  },
  {
-   "Place Name": "Gelsenkirchen, North Rhine-Westphalia",
-   "Latitude": 51.516666,
-   "Longitude": 7.1
+   country_id:3,
+   name: "Gelsenkirchen, North Rhine-Westphalia",
+   latitude: 51.516666,
+   longitude: 7.1
  },
  {
-   "Place Name": "Mannheim, Baden-Württemberg",
-   "Latitude": 49.488888,
-   "Longitude": 8.469167
+   country_id:3,
+   name: "Mannheim, Baden-Württemberg",
+   latitude: 49.488888,
+   longitude: 8.469167
  },
  {
-   "Place Name": "Bonn, North Rhine-Westphalia",
-   "Latitude": 50.733334,
-   "Longitude": 7.1
+   country_id:3,
+   name: "Bonn, North Rhine-Westphalia",
+   latitude: 50.733334,
+   longitude: 7.1
  },
  {
-   "Place Name": "Bielefeld, North Rhine-Westphalia",
-   "Latitude": 52.021111,
-   "Longitude": 8.534722
+   country_id:3,
+   name: "Bielefeld, North Rhine-Westphalia",
+   latitude: 52.021111,
+   longitude: 8.534722
  },
  {
-   "Place Name": "Duisburg, North Rhine-Westphalia",
-   "Latitude": 51.435146,
-   "Longitude": 6.762692
+   country_id:3,
+   name: "Duisburg, North Rhine-Westphalia",
+   latitude: 51.435146,
+   longitude: 6.762692
  },
  {
-   "Place Name": "Essen, North Rhine-Westphalia",
-   "Latitude": 51.450832,
-   "Longitude": 7.013056
+   country_id:3,
+   name: "Essen, North Rhine-Westphalia",
+   latitude: 51.450832,
+   longitude: 7.013056
  },
  {
-   "Place Name": "Düsseldorf, North Rhine-Westphalia",
-   "Latitude": 51.233334,
-   "Longitude": 6.783333
+   country_id:3,
+   name: "Düsseldorf, North Rhine-Westphalia",
+   latitude: 51.233334,
+   longitude: 6.783333
  },
  {
-   "Place Name": "Stuttgart, Baden-Württemberg",
-   "Latitude": 48.783333,
-   "Longitude": 9.183333
+   country_id:3,
+   name: "Stuttgart, Baden-Württemberg",
+   latitude: 48.783333,
+   longitude: 9.183333
  },
  {
-   "Place Name": "Cottbus, Brandenburg",
-   "Latitude": 51.75631,
-   "Longitude": 14.332868
+   country_id:3,
+   name: "Cottbus, Brandenburg",
+   latitude: 51.75631,
+   longitude: 14.332868
  },
  {
-   "Place Name": "Freiburg, Baden-Württemberg",
-   "Latitude": 47.997791,
-   "Longitude": 7.842609
+   country_id:3,
+   name: "Freiburg, Baden-Württemberg",
+   latitude: 47.997791,
+   longitude: 7.842609
  },
  {
-   "Place Name": "Oranienburg, Brandenburg",
-   "Latitude": 52.753727,
-   "Longitude": 13.236681
+   country_id:3,
+   name: "Oranienburg, Brandenburg",
+   latitude: 52.753727,
+   longitude: 13.236681
  },
  {
-   "Place Name": "Grimma, Saxony",
-   "Latitude": 51.236443,
-   "Longitude": 12.720231
+   country_id:3,
+   name: "Grimma, Saxony",
+   latitude: 51.236443,
+   longitude: 12.720231
  },
  {
-   "Place Name": "Tübingen, Baden-Württemberg",
-   "Latitude": 48.521637,
-   "Longitude": 9.057645
+   country_id:3,
+   name: "Tübingen, Baden-Württemberg",
+   latitude: 48.521637,
+   longitude: 9.057645
  },
  {
-   "Place Name": "Mainz, Rhineland-Palatinate",
-   "Latitude": 49.992863,
-   "Longitude": 8.247253
+   country_id:3,
+   name: "Mainz, Rhineland-Palatinate",
+   latitude: 49.992863,
+   longitude: 8.247253
  },
  {
-   "Place Name": "Münster, North Rhine-Westphalia",
-   "Latitude": 51.961563,
-   "Longitude": 7.628202
+   country_id:3,
+   name: "Münster, North Rhine-Westphalia",
+   latitude: 51.961563,
+   longitude: 7.628202
  },
  {
-   "Place Name": "Cologne, North Rhine-Westphalia",
-   "Latitude": 50.933594,
-   "Longitude": 6.961899
+   country_id:3,
+   name: "Cologne, North Rhine-Westphalia",
+   latitude: 50.933594,
+   longitude: 6.961899
  },
  {
-   "Place Name": "Dresden",
-   "Latitude": 51.050407,
-   "Longitude": 13.737262
+   country_id:3,
+   name: "Dresden",
+   latitude: 51.050407,
+   longitude: 13.737262
  },
  {
-   "Place Name": "Kassel, Hesse",
-   "Latitude": 51.312801,
-   "Longitude": 9.481544
+   country_id:3,
+   name: "Kassel, Hesse",
+   latitude: 51.312801,
+   longitude: 9.481544
  },
  {
-   "Place Name": "Bochum, North Rhine-Westphalia",
-   "Latitude": 51.481846,
-   "Longitude": 7.216236
+   country_id:3,
+   name: "Bochum, North Rhine-Westphalia",
+   latitude: 51.481846,
+   longitude: 7.216236
  },
  {
-   "Place Name": "Augsburg, Bavaria",
-   "Latitude": 48.366512,
-   "Longitude": 10.894446
+   country_id:3,
+   name: "Augsburg, Bavaria",
+   latitude: 48.366512,
+   longitude: 10.894446
  },
  {
-   "Place Name": "Cologne",
-   "Latitude": 50.935173,
-   "Longitude": 6.953101
+   country_id:3,
+   name: "Cologne",
+   latitude: 50.935173,
+   longitude: 6.953101
  },
  {
-   "Place Name": "Karlsruhe, Baden-Württemberg",
-   "Latitude": 49.006889,
-   "Longitude": 8.403653
+   country_id:3,
+   name: "Karlsruhe, Baden-Württemberg",
+   latitude: 49.006889,
+   longitude: 8.403653
  },
  {
-   "Place Name": "Wolfsburg, Lower Saxony",
-   "Latitude": 52.427547,
-   "Longitude": 10.78042
+   country_id:3,
+   name: "Wolfsburg, Lower Saxony",
+   latitude: 52.427547,
+   longitude: 10.78042
  },
  {
-   "Place Name": "Dortmund",
-   "Latitude": 51.514244,
-   "Longitude": 7.468429
+   country_id:3,
+   name: "Dortmund",
+   latitude: 51.514244,
+   longitude: 7.468429
  },
  {
-   "Place Name": "Weimar, Thuringia",
-   "Latitude": 50.979492,
-   "Longitude": 11.323544
+   country_id:3,
+   name: "Weimar, Thuringia",
+   latitude: 50.979492,
+   longitude: 11.323544
  },
  {
-   "Place Name": "Gera, Thuringia",
-   "Latitude": 50.884842,
-   "Longitude": 12.079811
+   country_id:3,
+   name: "Gera, Thuringia",
+   latitude: 50.884842,
+   longitude: 12.079811
  },
  {
-   "Place Name": "Bremen",
-   "Latitude": 53.073635,
-   "Longitude": 8.806422
+   country_id:3,
+   name: "Bremen",
+   latitude: 53.073635,
+   longitude: 8.806422
  },
  {
-   "Place Name": "Wernigerode",
-   "Latitude": 51.837635,
-   "Longitude": 10.783489
+   country_id:3,
+   name: "Wernigerode",
+   latitude: 51.837635,
+   longitude: 10.783489
  },
  {
-   "Place Name": "Hanover, Lower Saxony",
-   "Latitude": 52.37392,
-   "Longitude": 9.735603
+   country_id:3,
+   name: "Hanover, Lower Saxony",
+   latitude: 52.37392,
+   longitude: 9.735603
  },
  {
-   "Place Name": "Darmstadt",
-   "Latitude": 49.878708,
-   "Longitude": 8.646927
+   country_id:3,
+   name: "Darmstadt",
+   latitude: 49.878708,
+   longitude: 8.646927
  },
  {
-   "Place Name": "Regensburg, Bavaria",
-   "Latitude": 49.013432,
-   "Longitude": 12.101624
+   country_id:3,
+   name: "Regensburg, Bavaria",
+   latitude: 49.013432,
+   longitude: 12.101624
  },
  {
-   "Place Name": "Berlin",
-   "Latitude": 52.520008,
-   "Longitude": 13.404954
+   country_id:3,
+   name: "Berlin",
+   latitude: 52.520008,
+   longitude: 13.404954
  },
  {
-   "Place Name": "Munich, Bavaria",
-   "Latitude": 48.137154,
-   "Longitude": 11.576124
+   country_id:3,
+   name: "Munich, Bavaria",
+   latitude: 48.137154,
+   longitude: 11.576124
  },
  {
-   "Place Name": "Meissen",
-   "Latitude": 51.164703,
-   "Longitude": 13.496017
+   country_id:3,
+   name: "Meissen",
+   latitude: 51.164703,
+   longitude: 13.496017
  },
  {
-   "Place Name": "Nuremberg",
-   "Latitude": 49.460983,
-   "Longitude": 11.061859
+   country_id:3,
+   name: "Nuremberg",
+   latitude: 49.460983,
+   longitude: 11.061859
  },
  {
-   "Place Name": "Hamburg",
-   "Latitude": 53.551086,
-   "Longitude": 9.993682
+   country_id:3,
+   name: "Hamburg",
+   latitude: 53.551086,
+   longitude: 9.993682
  },
  {
-   "Place Name": "Hilden",
-   "Latitude": 51.167858,
-   "Longitude": 6.935225
+   country_id:3,
+   name: "Hilden",
+   latitude: 51.167858,
+   longitude: 6.935225
  },
  {
-   "Place Name": "Solingen",
-   "Latitude": 51.170208,
-   "Longitude": 7.083141
+   country_id:3,
+   name: "Solingen",
+   latitude: 51.170208,
+   longitude: 7.083141
  },
  {
-   "Place Name": "Moers",
-   "Latitude": 51.451603,
-   "Longitude": 6.640815
+   country_id:3,
+   name: "Moers",
+   latitude: 51.451603,
+   longitude: 6.640815
  },
  {
-   "Place Name": "Göttingen",
-   "Latitude": 51.545483,
-   "Longitude": 9.905548
+   country_id:3,
+   name: "Göttingen",
+   latitude: 51.545483,
+   longitude: 9.905548
  },
  {
-   "Place Name": "Wiesbaden",
-   "Latitude": 50.078217,
-   "Longitude": 8.239761
+   country_id:3,
+   name: "Wiesbaden",
+   latitude: 50.078217,
+   longitude: 8.239761
  },
  {
-   "Place Name": "Ludwigshafen",
-   "Latitude": 49.477409,
-   "Longitude": 8.44518
+   country_id:3,
+   name: "Ludwigshafen",
+   latitude: 49.477409,
+   longitude: 8.44518
  },
  {
-   "Place Name": "Frankfurt",
-   "Latitude": 50.110924,
-   "Longitude": 8.682127
+   country_id:3,
+   name: "Frankfurt",
+   latitude: 50.110924,
+   longitude: 8.682127
  },
  {
-   "Place Name": "Leipzig, Saxony",
-   "Latitude": 51.343479,
-   "Longitude": 12.387772
+   country_id:3,
+   name: "Leipzig, Saxony",
+   latitude: 51.343479,
+   longitude: 12.387772
  },
  {
-   "Place Name": "Wuppertal",
-   "Latitude": 51.256214,
-   "Longitude": 7.150764
+   country_id:3,
+   name: "Wuppertal",
+   latitude: 51.256214,
+   longitude: 7.150764
  },
  {
-   "Place Name": "Fulda",
-   "Latitude": 50.555809,
-   "Longitude": 9.680845
+   country_id:3,
+   name: "Fulda",
+   latitude: 50.555809,
+   longitude: 9.680845
  },
  {
-   "Place Name": "Luckenwalde",
-   "Latitude": 52.090389,
-   "Longitude": 13.163691
+   country_id:3,
+   name: "Luckenwalde",
+   latitude: 52.090389,
+   longitude: 13.163691
  },
  {
-   "Place Name": "Windischletten",
-   "Latitude": 49.996677,
-   "Longitude": 10.994418
+   country_id:3,
+   name: "Windischletten",
+   latitude: 49.996677,
+   longitude: 10.994418
  },
  {
-   "Place Name": "Grafenwöhr, Bavaria",
-   "Latitude": 49.713936,
-   "Longitude": 11.909094
+   country_id:3,
+   name: "Grafenwöhr, Bavaria",
+   latitude: 49.713936,
+   longitude: 11.909094
  },
  {
-   "Place Name": "Gerolzhofen",
-   "Latitude": 49.897511,
-   "Longitude": 10.351524
+   country_id:3,
+   name: "Gerolzhofen",
+   latitude: 49.897511,
+   longitude: 10.351524
  },
  {
-   "Place Name": "Kalbach",
-   "Latitude": 50.437061,
-   "Longitude": 9.639988
+   country_id:3,
+   name: "Kalbach",
+   latitude: 50.437061,
+   longitude: 9.639988
  },
  {
-   "Place Name": "Baden-Baden, Baden-Württemberg",
-   "Latitude": 48.758339,
-   "Longitude": 8.243008
+   country_id:3,
+   name: "Baden-Baden, Baden-Württemberg",
+   latitude: 48.758339,
+   longitude: 8.243008
  },
  {
-   "Place Name": "Heidelberg Old City, Baden-Württemberg",
-   "Latitude": 49.39875,
-   "Longitude": 8.672434
+   country_id:3,
+   name: "Heidelberg Old City, Baden-Württemberg",
+   latitude: 49.39875,
+   longitude: 8.672434
  },
  {
-   "Place Name": "Lindau, Bavaria",
-   "Latitude": 47.5574,
-   "Longitude": 9.707209
+   country_id:3,
+   name: "Lindau, Bavaria",
+   latitude: 47.5574,
+   longitude: 9.707209
  },
  {
-   "Place Name": "Koblenz, Rhineland-Palatinate",
-   "Latitude": 50.360023,
-   "Longitude": 7.589907
+   country_id:3,
+   name: "Koblenz, Rhineland-Palatinate",
+   latitude: 50.360023,
+   longitude: 7.589907
  }
 ]

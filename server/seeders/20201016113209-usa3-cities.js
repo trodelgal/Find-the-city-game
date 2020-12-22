@@ -7,6 +7,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Cities', null, {});
+    // await queryInterface.bulkInsert('Cities', null, {});
   }
 };
