@@ -2,27 +2,28 @@ require("dotenv").config();
 
 module.exports = {
   development: {
-    username: process.env.DB_USERNAME || "root",
-    password: process.env.DB_PASSWORD || null,
-    database: process.env.DB_NAME || "Google_Map_Game",
-    host: process.env.DB_HOST || "127.0.0.1",
+    username: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    host: process.env.MYSQL_HOST,
     dialect: "mysql",
-    define: { underscored: true },
+    define: {
+      underscored: true,
+    },
+    logging: false,
   },
   test: {
-    username: process.env.DB_USERNAME || "root",
-    password: process.env.DB_PASSWORD || null,
-    database: process.env.DB_TEST || "Google_Map_Game_test",
-    host: process.env.DB_HOST || "127.0.0.1",
+    username: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    host: process.env.MYSQL_HOST,
     dialect: "mysql",
-    define: { underscored: true },
   },
   production: {
-    username: process.env.DB_USERNAME || "root",
-    password: process.env.DB_PASSWORD || null,
-    database: process.env.DB_NAME || "challenge_production",
-    host: process.env.DB_HOST || "127.0.0.1",
+    username: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    host: process.env.MYSQL_HOST,
     dialect: "mysql",
-    define: { underscored: true },
   },
 };

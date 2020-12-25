@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "npx sequelize db:seed:all",
+    "undoseed": "npx sequelize db:seed:undo:all",
+    "migrate": "npx sequelize db:migrate",
     "dev": "nodemon index.js",
-    "start": "nodemon index.js",
-    "createDB": "node_modules/.bin/sequelize db:create",
-    "migrate": "node_modules/.bin/sequelize db:migrate",
-    "seed": "node_modules/.bin/sequelize db:seed:all",
+    "spinup": "npm run migrate && npm run dev",
+    "spinupseed": "npm run migrate && npm run undoseed && npm run seed && npm run start",
+    "start": "node .",
+    "createDB": "npx sequelize db:create",
     "dbup": "npm run createDB && npm run migrate"
   },
   "keywords": [],
@@ -20,10 +23,10 @@
     "express": "^4.17.1",
     "joi": "^17.3.0",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.5",
-    "sequelize-cli": "^6.2.0"
+    "nodemon": "^2.0.5"
   }
 }

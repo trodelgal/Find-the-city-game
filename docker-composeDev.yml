@@ -1,0 +1,70 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db-map:
+    container_name: city-db
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: G15162411t
+      MYSQL_ROOT_PASSWORD: G15162411t
+      MYSQL_DATABASE: Google_Map_Game
+      MYSQL_USER: root
+    ports:
+      - "3307:3306"
+    expose:
+      - "3307"
+    networks:
+      - mern-app
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+
+  api-server:
+    container_name: city-server 
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - '/usr/app/server/node_modules'
+      - ./server:/usr/app/server
+    stdin_open: true
+    ports: 
+      - 8080:8080
+    environment:
+      DB_HOST: city-db
+      DB_PORT: "3307"
+      DB_USER: "root"
+      DB_PASSWORD: "G15162411t"
+      DB_DEV: "mysql"
+    command: npm run dev
+    networks:
+      - mern-app
+    depends_on:
+      - db-map
+
+  react-app:
+    container_name: city-client
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    stdin_open: true
+    volumes:
+      - '/usr/app/client/node_modules'
+      - ./client:/usr/app/client
+    ports: 
+      - 3030:3000
+    command: npm start 
+    networks:
+      - mern-app
+    depends_on:
+      - api-server
+
+networks:
+  mern-app:
+    driver: bridge
+volumes: 
+  mysql-data:
+    driver: local

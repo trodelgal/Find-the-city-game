@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const path = require("path");
 app.use(express.json());
 
 // use the client
@@ -15,6 +16,11 @@ app.use(logger);
 
 // find the data with the request path
 app.use('/api', require('./api'));
+
+//conect client 
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+});
 
 // network error handler
 const errorHandler = (error, request, response, next) => {
