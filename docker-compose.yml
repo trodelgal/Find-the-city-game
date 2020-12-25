@@ -1,16 +1,15 @@
 version: '3.1'
 
 services:
-
-    mysql:
+    DB-map:
       image: mysql:8
       cap_add:
         - SYS_NICE  # CAP_SYS_NICE -> silently handles warnings
       command: --default-authentication-plugin=mysql_native_password
       restart: always
       environment:
-        MYSQL_ROOT_PASSWORD: G15262411t
-        MYSQL_PASSWORD: G15262411t
+        MYSQL_ROOT_PASSWORD: G15162411t
+        MYSQL_PASSWORD: G15162411t
         MYSQL_DATABASE: Google_Map_Game
         MYSQL_USER: root
       volumes: 
@@ -20,7 +19,7 @@ services:
 
     api-server:
       depends_on:
-        - mysql
+        - DB-map
       build:
         context: .
         dockerfile: Dockerfile
@@ -31,9 +30,9 @@ services:
         - application-network
       environment:
         MYSQL_USER: root
-        MYSQL_PASSWORD: G15262411t
+        MYSQL_PASSWORD: G15162411t
         MYSQL_DATABASE: Google_Map_Game
-        MYSQL_HOST: mysql
+        MYSQL_HOST: DB-map
         SERVER_PORT: 8080 ## Change if your port is different
 
 networks:
