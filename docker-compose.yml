@@ -9,9 +9,9 @@ services:
       command: --default-authentication-plugin=mysql_native_password
       restart: always
       environment:
-        MYSQL_ROOT_PASSWORD: password
-        MYSQL_PASSWORD: password
-        MYSQL_DATABASE: database_development
+        MYSQL_ROOT_PASSWORD: G15262411t
+        MYSQL_PASSWORD: G15262411t
+        MYSQL_DATABASE: Google_Map_Game
         MYSQL_USER: root
       volumes: 
         - mysql-data:/var/lib/mysql
@@ -31,8 +31,8 @@ services:
         - application-network
       environment:
         MYSQL_USER: root
-        MYSQL_PASSWORD: password
-        MYSQL_DATABASE: database_development
+        MYSQL_PASSWORD: G15262411t
+        MYSQL_DATABASE: Google_Map_Game
         MYSQL_HOST: mysql
         SERVER_PORT: 8080 ## Change if your port is different
 
