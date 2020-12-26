@@ -35,7 +35,7 @@ function EndGameModal({handleClose, gameFinished, score, saveRecord,  endGame, s
                 Name: <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)}/><br/>
                 class: <select onChange={(e)=>setClassName(e.target.value)}>
                     <option>privet</option>
-                    {classes.map((value,i) =>{
+                    {classes[0] && classes.map((value,i) =>{
                         return(
                             <option key={i}>{`${value.id}. ${value.school} - ${value.class}`}</option>
                         )

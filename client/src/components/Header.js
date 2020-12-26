@@ -19,7 +19,7 @@ function Header({
       <Navbar.Brand>Find The City</Navbar.Brand>
       <Nav className="mr-auto">
         <NavDropdown title="Countries" id="basic-nav-dropdown">
-          {allCountries &&
+          {allCountries && allCountries[0] &&
             !start &&
             allCountries.map((val) => {
               return (
