@@ -193,7 +193,7 @@ function App() {
               style={{ width: "100%", height: "100%" }}
             >
               <Map
-                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_KEY}&callback=initMap&libraries=&v=weekly`}
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCqqDuumXyArhUmAY5yPnEUepugkc6RaP4&callback=initMap&libraries=&v=weekly`}
                 loadingElement={<div style={{ height: `90%` }} />}
                 containerElement={
                   <div style={{ height: `85%`, width: "77%" }} />
