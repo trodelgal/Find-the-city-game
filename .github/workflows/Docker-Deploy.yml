@@ -75,8 +75,8 @@ jobs:
 
     # ONLY first time setup
     # # Initialize Envoironment in Gcloud Instance
-    # - name: Initialize communication with gcr
-    #   run: make initialize
+    - name: Initialize communication with gcr
+      run: make initialize
 
     # Deploy Container to Gcloud Instance
     - name: deploy
