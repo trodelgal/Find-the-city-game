@@ -44,7 +44,7 @@ start-app:
 			-e MYSQL_HOST=${DB_HOST} \
 			-e MYSQL_DATABASE=${DB_NAME} \
 			-e MYSQL_USER=${DB_USER} \
-			-e MYSQL_PASSWORD=${DB_PASS} \
+			-e DB_PASSWORD=${DB_PASS} \
 			-p ${SERVER_PORT}:${SERVER_PORT} \
 			$(REMOTE_TAG) \
 			'
