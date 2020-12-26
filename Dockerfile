@@ -13,7 +13,7 @@ RUN npm install --production
 # if you encounter bcrypt errors -> replace it with 'bcrypt.js',
 # just npm install it, remove bcrypt and update instances to "require('bcrypt.js')""
 
-RUN git clone https://github.com/vishnubob/wait-for-it.git
+# RUN git clone https://github.com/vishnubob/wait-for-it.git
 
 #Change to your Port
 
@@ -21,8 +21,7 @@ EXPOSE 8080
 
 COPY /server .
 
-
-# CMD ["npm", "run", "spinupseed"]
+CMD ["npm", "run", "spinupseed"]
 
 # in your package.json add a script that migrates your database and then start your server
 # example -> 
