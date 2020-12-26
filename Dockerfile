@@ -27,7 +27,7 @@ CMD ["npm", "run", "spinupseed"]
 
 # in your package.json add a script that migrates your database and then start your server
 # example -> 
-# "seed": "npx sequelize db:seed:all".
+# "seed": "npx sequelize db:seed:all"
 # "undoseed": "npx sequelize db:seed:undo:all"
 # "migrate": "npx sequelize db:migrate"
 # "dev": "how you start your server"
