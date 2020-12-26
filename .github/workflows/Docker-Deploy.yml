@@ -10,7 +10,7 @@ env:
   GCE_INSTANCE: instance-docker   # TODO: name your instance
   GCE_INSTANCE_ZONE: us-central1-a   # TODO: update to instance zone if needed
   SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }} # The service account user you created
-  DB_PASSWORD: ${{ secrets.DB_PASS }}
+  DB_PASS: ${{ secrets.DB_PASS }}
   DB_USER: root
   DB_HOST: ${{ secrets.DB_HOST }}
   DB_NAME: ${{ secrets.DB_NAME }}

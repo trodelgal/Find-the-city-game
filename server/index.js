@@ -1,7 +1,7 @@
 require("dotenv").config();
 const app = require('./app');
 
-console.log(process.env.DB_PASSWORD);
+console.log("pass=",process.env.DB_PASSWORD);
 console.log(process.env.MYSQL_DATABASE);
 console.log(process.env.MYSQL_USER);
 console.log(process.env.MYSQL_HOST);
