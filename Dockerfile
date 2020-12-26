@@ -21,7 +21,7 @@ EXPOSE 8080
 
 COPY /server .
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "spinupseed"]
 
 # in your package.json add a script that migrates your database and then start your server
 # example -> 
