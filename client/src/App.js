@@ -44,6 +44,7 @@ function App() {
   const fetchInitialData = useCallback(async () => {
     try {
       const allCountries = await axios.get("/api/countries/");
+      console.log(allCountries.data);
       setAllCountries(allCountries.data);
       // set initial country to israel
       setCountry(allCountries.data[0]); 

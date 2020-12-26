@@ -18,6 +18,10 @@ module.exports = {
     database: process.env.MYSQL_DATABASE_TEST,
     host: process.env.MYSQL_HOST_TEST,
     dialect: "mysql",
+    define: {
+      underscored: true,
+    },
+    logging: false,
   },
   production: {
     username: process.env.MYSQL_USER,
@@ -25,5 +29,9 @@ module.exports = {
     database: process.env.MYSQL_DATABASE,
     host: process.env.MYSQL_HOST,
     dialect: "mysql",
+    define: {
+      underscored: true,
+    },
+    logging: false,
   },
 };
