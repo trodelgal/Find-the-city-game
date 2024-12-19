@@ -38,23 +38,22 @@ function App() {
     setEndTime("");
     setGameFinished(false);
     setStart(false);
-  },[]);
+  }, []);
 
   // fetch all the initial data from db
   const fetchInitialData = useCallback(async () => {
     try {
       const allCountries = await axios.get("/api/countries/");
-      console.log(allCountries.data);
       setAllCountries(allCountries.data);
       // set initial country to israel
-      setCountry(allCountries.data[0]); 
+      setCountry(allCountries.data[0]);
       const countryCities = await axios.get(`/api/cities/Israel`);
       // ret the initial cities to israel cities
       setCities(countryCities.data);
     } catch (err) {
       console.log(err);
     }
-  },[]);
+  }, []);
 
   const getCountryCity = useCallback(async () => {
     try {
@@ -63,7 +62,7 @@ function App() {
     } catch (err) {
       console.log(err);
     }
-  },[country]);
+  }, [country]);
 
   // on loading start the initial function
   useEffect(() => {
@@ -97,7 +96,7 @@ function App() {
     let newCity = cities[i];
     setChallengeCities((val) => [...val, newCity]);
   }
- 
+
   // map click function
   function playerClick(location) {
     if (start) {
@@ -112,7 +111,7 @@ function App() {
   }
 
   // start the game function
-  const startGame = useCallback(()=> {
+  const startGame = useCallback(() => {
     // get random city
     let i;
     i = Math.floor(Math.random() * cities.length);
@@ -120,20 +119,20 @@ function App() {
     setChallengeCities((val) => [...val, newCity]);
     setStart(true);
     setStartTime(new Date().getTime());
-  },[cities])
+  }, [cities]);
 
-  // reset app function 
-  const endGame= useCallback(()=>{
+  // reset app function
+  const endGame = useCallback(() => {
     window.location = "/";
-  },[])
+  }, []);
 
-  const changeContry = useCallback((countryValue)=>{
+  const changeContry = useCallback((countryValue) => {
     clearState();
     setCountry(countryValue);
-  },[])
+  }, []);
 
   // calculate the distance between the click location to the turn city location
-  const calcDistance= useCallback((mk1, mk2)=> {
+  const calcDistance = useCallback((mk1, mk2) => {
     var R = 3958.8; // Radius of the Earth in miles
     var rlat1 = mk1.lat() * (Math.PI / 180); // Convert degrees to radians
     var rlat2 = mk2.lat * (Math.PI / 180); // Convert degrees to radians
@@ -152,23 +151,26 @@ function App() {
         )
       );
     return d;
-  },[])
+  }, []);
 
   // close modal
   const handleClose = () => setGameFinished(false);
 
   // save the record to db
-  const saveRecord = useCallback((name, totalScore, classId)=> {
-    if (name === "") return alert("You Must Enter Your Name!");
-    let recordObj = {
-      name: name,
-      score: totalScore,
-      country: country.name,
-      classId: parseInt(classId),
-    };
-    axios.post("/api/records/", recordObj);
-    setGameFinished(false);
-  },[country])
+  const saveRecord = useCallback(
+    (name, totalScore, classId) => {
+      if (name === "") return alert("You Must Enter Your Name!");
+      let recordObj = {
+        name: name,
+        score: totalScore,
+        country: country.name,
+        classId: parseInt(classId),
+      };
+      axios.post("/api/records/", recordObj);
+      setGameFinished(false);
+    },
+    [country]
+  );
 
   return (
     <CountryContext.Provider
@@ -213,7 +215,7 @@ function App() {
                   endTime={endTime}
                 />
               ) : (
-                <Rules/>
+                <Rules />
               )}
             </section>
             <EndGameModal
