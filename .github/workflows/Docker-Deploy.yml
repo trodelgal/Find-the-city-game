@@ -34,7 +34,7 @@ jobs:
       # Step 5: Build and Push the Server Image
       - name: Build and Push Server Image
         run: |
-          docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/server ./server
+          docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/server .
           docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/server
 
       # Step 6: Deploy Containers Using docker-compose
