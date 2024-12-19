@@ -1,36 +1,17 @@
-FROM node:12
+# Step 1: Build the React app
+FROM node:14 as client-builder
+WORKDIR /client
+COPY ./client .
+RUN npm install
+RUN npm run build
 
-WORKDIR /client/build
-
-ADD /client/build .
-
+# Step 2: Build the Express server
+FROM node:14 as server
 WORKDIR /server
+COPY ./server .
+COPY --from=client-builder /client/build ../client/build
+RUN npm install
 
-COPY /server/package.json /server/package-lock.json ./
-
-RUN npm install --production
-
-# if you encounter bcrypt errors -> replace it with 'bcrypt.js',
-# just npm install it, remove bcrypt and update instances to "require('bcrypt.js')""
-
-RUN git clone https://github.com/vishnubob/wait-for-it.git
-
-#Change to your Port
-
-EXPOSE 8080 
-
-COPY /server .
-
-CMD ["npm", "run", "spinupseed"]
-
-# in your package.json add a script that migrates your database and then start your server
-# example -> 
-# "seed": "npx sequelize db:seed:all"
-# "undoseed": "npx sequelize db:seed:undo:all".
-# "migrate": "npx sequelize db:migrate"
-# "dev": "how you start your server"
-# "spinup": "npm run migrate && npm run dev"
-# "spinupseed": "npm run migrate && npm run undoseed && npm run seed && npm run dev" // for continuesly seeding data
-
-
-
+# Expose port and start the server
+EXPOSE 8080
+# CMD ["node", "index.js"]

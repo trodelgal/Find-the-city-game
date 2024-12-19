@@ -1,11 +1,14 @@
-FROM node:12
+# Use Node.js image for building the React app
+FROM node:14-slim as builder
 
-WORKDIR /usr/app/client
+# Set working directory
+WORKDIR /client
 
-COPY . .
-
+# Copy package files and install dependencies
+COPY package*.json ./
 RUN npm install
 
-# EXPOSE 3000
+# Copy application files and build the React app
+COPY . .
+RUN npm run build
 
-# CMD ["npm", "start"]

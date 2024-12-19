@@ -1,45 +1,36 @@
-version: '3.1'
-
+version: "3.8"
 services:
-  DB-map:
-    image: mysql:8
-    cap_add:
-      - SYS_NICE  # CAP_SYS_NICE -> silently handles warnings
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_USER=django
-      - MYSQL_PASSWORD=secret
-      - MYSQL_DATABASE=myAppDB
-
-    volumes: 
-      - mysql-data:/var/lib/mysql
-    networks: 
-      - application-network
-
-  api-server:
-    depends_on:
-      - DB-map
+  server:
     build:
       context: .
-      dockerfile: Dockerfile
-    image: myapplication
-    ports: 
-        - "8080:8080" ## Change if your port is different
-    networks: 
-      - application-network
+    image: us-central1-docker.pkg.dev/coral-circlet-445213-q4/my-repo/server
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
     environment:
-      - MYSQL_USER=django
-      - MYSQL_PASSWORD=secret
-      - MYSQL_DATABASE=myAppDB
-      - MYSQL_HOST=DB-map
-      - SERVER_PORT=8080 ## Change if your port is different
-    command: "./wait-for-it/wait-for-it.sh mysql:3306 -- npm run spinupseed"
+      - MYSQL_HOST=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=myappdb
+    command: "npm run spinupseed"
 
-networks:
-  application-network:
-    driver: bridge
-volumes: 
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: myappdb
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
   mysql-data:
-    driver: local
