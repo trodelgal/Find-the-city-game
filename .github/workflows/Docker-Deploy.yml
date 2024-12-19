@@ -27,19 +27,14 @@ jobs:
           project_id: ${{ secrets.PROJECT_ID }}
           location: us-central1
 
-      # Step 4: Configure Docker for Artifact Registry
-      - name: Configure Docker for Artifact Registry
-        run: gcloud auth configure-docker us-central1-docker.pkg.dev
-
-      # Step 5: Build and Push the Server Image
-      - name: Build and Push Server Image
+          # Step 4: Install Docker Compose
+      - name: Install Docker Compose
         run: |
-          docker build -t us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/my-repo/server .
-          docker push us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/my-repo/server
+          sudo curl -L "https://github.com/docker/compose/releases/download/v2.32.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version
 
-      # Step 6: Deploy Containers Using docker-compose
-      - name: Deploy Containers
-        env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+      # Step 5: Build and Run Docker Compose
+      - name: Build and Push with Docker Compose
         run: |
           docker-compose up --build
