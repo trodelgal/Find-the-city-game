@@ -1,4 +1,4 @@
-name: Build and Push Docker Images to GCP
+name: Build and Deploy to GCP
 
 on:
   push:
@@ -7,34 +7,39 @@ on:
 
 jobs:
   build-and-push:
-    name: Build and Push Docker Compose to GCP
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the Repository
+      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Authenticate with GCP
+      # Step 2: Authenticate to Google Cloud
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      # Step 3: Configure gcloud
+      # Step 3: Configure gcloud CLI
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v1
         with:
-          project_id: ${{ secrets.PROJECT_ID }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
           location: us-central1
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
 
       # Step 4: Configure Docker for Artifact Registry
-      - name: Configure Docker for GCP Artifact Registry
+      - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker us-central1-docker.pkg.dev
 
-      # Step 5: Build and Push Docker Compose Services
-      - name: Build and Push Docker Compose
+      # Step 5: Build and Push the Server Image
+      - name: Build and Push Server Image
         run: |
-          docker-compose -f docker-compose.yml build
-          docker-compose -f docker-compose.yml push
+          docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/server ./server
+          docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repo/server
+
+      # Step 6: Deploy Containers Using docker-compose
+      - name: Deploy Containers
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+        run: |
+          docker-compose -f docker-compose.yml up -d
